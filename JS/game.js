@@ -33,10 +33,14 @@ let secondCard = ''; //recebe
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
     if (disabledCards.length === 20) {
-        clearInterval(this.loop); /*Zera o time*/
-        alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
+        clearInterval(this.loop);
+        const playerName = spanPlayer.innerHTML;
+        const score = parseInt(timer.innerHTML);
+        alert(`Parabéns, ${playerName}! Seu tempo foi: ${score}`);
+        saveScore(playerName, score);
     }
 }
+
 
 const checkCards = () => {
     const firstCharacter = firstCard.getAttribute('data-character');
@@ -82,6 +86,37 @@ const revealCard = ({ target }) => { //faz a carta virar
 
 }
 
+const saveScore = (playerName, score) => {
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    scores.push({ playerName, score });
+    localStorage.setItem('scores', JSON.stringify(scores));
+}
+
+const displayScoreHistory = (playerName) => {
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    const playerScores = scores.filter((score) => score.playerName === playerName);
+    
+    const scoreHistoryElement = document.querySelector('.score-history');
+    
+    if (scoreHistoryElement.style.display === 'none' || !playerScores.length) {
+        let historyHTML = '';
+        if (playerScores.length === 0) {
+            historyHTML = 'Nenhuma pontuação encontrada para este jogador.';
+        } else {
+            historyHTML = `Histórico de pontuações para ${playerName}:<br>`;
+            playerScores.forEach((score, index) => {
+                historyHTML += `${index + 1}. Tempo: ${score.score}<br>`;
+            });
+        }
+        scoreHistoryElement.innerHTML = historyHTML;
+        scoreHistoryElement.style.display = 'block'; // Mostra o histórico
+    } else {
+        scoreHistoryElement.innerHTML = ''; // Oculta o histórico
+        scoreHistoryElement.style.display = 'none';
+    }
+}
+
+
 const createCard = (character) => { //cria a carta
     const card = CreateElement('div', 'card');
     const front = CreateElement('div', 'face front');
@@ -118,5 +153,14 @@ window.onload = () => {
     startTimer();
     loadGame();
 }
+
+const showHideScoreHistoryButton = document.querySelector('.show-hide-score-history');
+showHideScoreHistoryButton.addEventListener("click", () => {
+    const playerName = spanPlayer.innerHTML;
+    displayScoreHistory(playerName);
+});
+
+
+
 
 

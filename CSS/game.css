@@ -1,4 +1,4 @@
-.botao {
+.botao{
     padding: 10px;
     border-radius: 25px;
     font-size: large;
@@ -8,7 +8,18 @@
     margin-bottom: 20px;
     border: rgb(11, 0, 0) solid 0.5px;
     box-shadow: 1px 1px 3px;
+}
 
+.show-hide-score-history{
+    padding: 10px;
+    border-radius: 25px;
+    font-size: large;
+    background-color: rgb(139, 150, 13);
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: rgb(11, 0, 0) solid 0.5px;
+    box-shadow: 1px 1px 3px;    
 }
 
 /*---------------------------------*/
@@ -25,7 +36,7 @@ main {
     padding: 20px 20px 70px;
 }
 
-header {
+header, .score-history {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -84,7 +95,7 @@ header {
 }
 
 .reveal-card {
-    /*FAZ*/
+    /*FAZ A CARTA GIRAR*/
     transform: rotateY(180deg);
 }
 
