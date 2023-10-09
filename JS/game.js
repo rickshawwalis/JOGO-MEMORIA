@@ -118,5 +118,5 @@ window.onload = () => {
     startTimer();
     loadGame();
 }
-
+//,L,
 
