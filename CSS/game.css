@@ -1,0 +1,102 @@
+.botao {
+    padding: 10px;
+    border-radius: 25px;
+    font-size: large;
+    background-color: rgb(28, 164, 7);
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: rgb(11, 0, 0) solid 0.5px;
+    box-shadow: 1px 1px 3px;
+
+}
+
+/*---------------------------------*/
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url('../IMAGENS/rickandmortywallpaper.png');
+    background-size: cover;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 70px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+/*---------------------------------*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /*cria 5 colunas com uma fração do tamanho*/
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.card {
+    aspect-ratio: 3/4;
+    /*tamanho da carta de forma proporcionalmente igual*/
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    transition: all 400ms ease;
+    transform-style: preserve-3d;
+    background-color: #ccc;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #39813a;
+    border-radius: 5px;
+    transition: all 400ms ease;
+    /*faz a transição quando a carta é localizada*/
+}
+
+.front {
+    /*INTERNO*/
+    transform: rotateY(180deg);
+}
+
+.back {
+    /*CAPA*/
+    background-image: url('../IMAGENS/capa.jpeg');
+    backface-visibility: hidden;
+}
+
+.reveal-card {
+    /*FAZ*/
+    transform: rotateY(180deg);
+}
+
+.disabled-card {
+    /*as cartas iguais achadas ficam opacas*/
+    filter: saturate(0);
+    opacity: 0.5;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: -70px;
+    color: white;
+}
