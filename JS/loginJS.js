@@ -17,7 +17,7 @@ input.addEventListener('input', validateInput);
 const handleSubmit = (event) => {
     event.preventDefault(); //IMPEDE O ENVIO DO FORMULARIO
     localStorage.setItem('player', input.value); //ARMAZENA O NOME DO JOGADOR
-    window.location = 'pages/game.html'; //VAI PARA A PAGINA DESTINADA
+    window.location = 'PAGES/game.html'; //VAI PARA A PAGINA DESTINADA
 }
 form.addEventListener('submit', handleSubmit);
 
